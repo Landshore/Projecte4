@@ -57,40 +57,40 @@ Projecte-04/
 | Tasca | Títol | Tipus | Enllaç |
 |-------|-------|-------|--------|
 | T01 | DRP: Anàlisi Cas Client | Grup | [📂 T01](./Tasques/T01) |
-| T02 | DRP: Cas Pràctic | Grup | [📂 T02](./Tasques/T02_DRP_Cas_Practic/) |
-| T03 | Imatges del Sistema (Rescuezilla) | Individual | [📂 T03](./Tasques/T03_Imatges_Sistema/) |
+| T02 | DRP: Cas Pràctic | Grup | [📂 T02](./Tasques/T02) |
+| T03 | Imatges del Sistema (Rescuezilla) | Individual | [📂 T03](./Tasques/T03) |
 
 ### 🌐 Bloc Accés Remot
 
 | Tasca | Títol | Tipus | Enllaç |
 |-------|-------|-------|--------|
-| T04 | Introducció Accés Remot | Teoria | [📂 T04](./Tasques/T04_Acces_Remot_Intro/) |
-| T05 | Connexió via SSH | Individual | [📂 T05](./Tasques/T05_SSH/) |
-| T06 | Escriptori Remot (RDP) | Individual | [📂 T06](./Tasques/T06_RDP/) |
-| T07 | Assistència Remota | Parelles | [📂 T07](./Tasques/T07_Assistencia_Remota/) |
+| T04 | Introducció Accés Remot | Teoria | [📂 T04](./Tasques/T04) |
+| T05 | Connexió via SSH | Individual | [📂 T05](./Tasques/T05) |
+| T06 | Escriptori Remot (RDP) | Individual | [📂 T06](./Tasques/T06) |
+| T07 | Assistència Remota | Parelles | [📂 T07](./Tasques/T07) |
 
 ### 💾 Bloc Servidors
 
 | Tasca | Títol | Tipus | Enllaç |
 |-------|-------|-------|--------|
-| T08 | Auditoria i Estandardització | Individual | [📂 T08](./Tasques/T08_Auditoria_Servidors/) |
-| T09 | Servidor Fitxers NFS | Individual | [📂 T09](./Tasques/T09_Servidor_NFS/) |
-| T10 | Servidor Impressió CUPS | Individual | [📂 T10](./Tasques/T10_Servidor_CUPS/) |
+| T08 | Auditoria i Estandardització | Individual | [📂 T08](./Tasques/T08) |
+| T09 | Servidor Fitxers NFS | Individual | [📂 T09](./Tasques/T09) |
+| T10 | Servidor Impressió CUPS | Individual | [📂 T10](./Tasques/T10) |
 
 ### 🎨 Bloc UX/Web
 
 | Tasca | Títol | Tipus | Enllaç |
 |-------|-------|-------|--------|
-| T11 | Introducció a Figma | Teoria | [📂 T11](./Tasques/T11_Intro_Figma/) |
-| T12 | Fonaments Landing + Checkout | Teoria | [📂 T12](./Tasques/T12_Fonaments_Web/) |
-| T13 | E-commerce en Figma | Parelles | [📂 T13](./Tasques/T13_Ecommerce_Figma/) |
+| T11 | Introducció a Figma | Teoria | [📂 T11](./Tasques/T11) |
+| T12 | Fonaments Landing + Checkout | Teoria | [📂 T12](./Tasques/T12) |
+| T13 | E-commerce en Figma | Parelles | [📂 T13](./Tasques/T13) |
 
 ### ♻️ Bloc Sostenibilitat
 
 | Tasca | Títol | Tipus | Enllaç |
 |-------|-------|-------|--------|
-| T14 | Prova Escrita Sostenibilitat | Individual | [📂 T14](./Tasques/T14_Sostenibilitat_Escrita/) |
-| T15 | Circularitat Família Professional | Individual | [📂 T15](./Tasques/T15_Circularitat/) |
+| T14 | Prova Escrita Sostenibilitat | Individual | [📂 T14](./Tasques/T14) |
+| T15 | Circularitat Família Professional | Individual | [📂 T15](./Tasques/T15) |
 
 ---
 
@@ -98,9 +98,9 @@ Projecte-04/
 
 | Codi | Producte | Pes | Enllaç |
 |------|----------|-----|--------|
-| P01 | GitHub Col·laboratiu (Fork & Pull Request) | Equip | [📂 P01](./Productes/P01_GitHub_Collaboratiu/) |
-| P02 | Presentació Maqueta Figma al Client | Parelles | [📂 P02](./Productes/P02_Presentacio_Figma/) |
-| P03 | Kanban Complet del Projecte | Equip | [📂 P03](./Productes/P03_Kanban_Final/) |
+| P01 | GitHub Col·laboratiu (Fork & Pull Request) | Equip | [📂 P01](./Productes/P01) |
+| P02 | Presentació Maqueta Figma al Client | Parelles | [📂 P02](./Productes/P02) |
+| P03 | Kanban Complet del Projecte | Equip | [📂 P03](./Productes/P03) |
 
 ---
 
