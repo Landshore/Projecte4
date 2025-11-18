@@ -56,7 +56,7 @@ Projecte-04/
 
 | Tasca | Títol | Tipus | Enllaç |
 |-------|-------|-------|--------|
-| T01 | DRP: Anàlisi Cas Client | Grup | [📂 T01](./Tasques/T01_DRP_Cas_Client/) |
+| T01 | DRP: Anàlisi Cas Client | Grup | [📂 T01](./Tasques/T01) |
 | T02 | DRP: Cas Pràctic | Grup | [📂 T02](./Tasques/T02_DRP_Cas_Practic/) |
 | T03 | Imatges del Sistema (Rescuezilla) | Individual | [📂 T03](./Tasques/T03_Imatges_Sistema/) |
 
