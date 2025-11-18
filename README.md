@@ -1,17 +1,21 @@
-Projecte 4 - EverPia: El Desafiament Final
-📋 Descripció del Projecte
+# Projecte 4 - EverPia: El Desafiament Final
+
+## 📋 Descripció del Projecte
+
 Aquest és l'últim capítol de la trilogia EverPia. Després de setmanes treballant com a júnior IT a la consultora tecnològica EverPia, arriba el moment de demostrar tot el que hem après i preparar-nos per fer el salt professional.
+
 Durant 4 setmanes, donarem resposta a encàrrecs reals dins l'ecosistema empresarial d'EverPia:
+- 🔐 Gestió d'emergències i plans de recuperació (DRP)
+- 🌐 Implementació de serveis d'accés remot
+- 💾 Desplegament de servidors (NFS, CUPS)
+- 🎨 Disseny de prototips UX/UI amb Figma
+- ♻️ Integració de criteris de sostenibilitat
+- 📦 Gestió professional amb Git i Kanban
 
-🔐 Gestió d'emergències i plans de recuperació (DRP)
-🌐 Implementació de serveis d'accés remot
-💾 Desplegament de servidors (NFS, CUPS)
-🎨 Disseny de prototips UX/UI amb Figma
-♻️ Integració de criteris de sostenibilitat
-📦 Gestió professional amb Git i Kanban
+---
 
-
-🗂️ Estructura del Repositori
+## 🗂️ Estructura del Repositori
+```
 Projecte-04/
 │
 ├── README.md                    # Aquest document
@@ -42,136 +46,182 @@ Projecte-04/
     ├── P01_GitHub_Collaboratiu/
     ├── P02_Presentacio_Figma/
     └── P03_Kanban_Final/
+```
 
-📚 Índex de Tasques
-🔒 Bloc Seguretat i DRP
-TascaTítolTipusEnllaçT01DRP: Anàlisi Cas ClientGrup📂 T01T02DRP: Cas PràcticGrup📂 T02T03Imatges del Sistema (Rescuezilla)Individual📂 T03
-🌐 Bloc Accés Remot
-TascaTítolTipusEnllaçT04Introducció Accés RemotTeoria📂 T04T05Connexió via SSHIndividual📂 T05T06Escriptori Remot (RDP)Individual📂 T06T07Assistència RemotaParelles📂 T07
-💾 Bloc Servidors
-TascaTítolTipusEnllaçT08Auditoria i EstandarditzacióIndividual📂 T08T09Servidor Fitxers NFSIndividual📂 T09T10Servidor Impressió CUPSIndividual📂 T10
-🎨 Bloc UX/Web
-TascaTítolTipusEnllaçT11Introducció a FigmaTeoria📂 T11T12Fonaments Landing + CheckoutTeoria📂 T12T13E-commerce en FigmaParelles📂 T13
-♻️ Bloc Sostenibilitat
-TascaTítolTipusEnllaçT14Prova Escrita SostenibilitatIndividual📂 T14T15Circularitat Família ProfessionalIndividual📂 T15
+---
 
-🎯 Productes Finals
-CodiProductePesEnllaçP01GitHub Col·laboratiu (Fork & Pull Request)Equip📂 P01P02Presentació Maqueta Figma al ClientParelles📂 P02P03Kanban Complet del ProjecteEquip📂 P03
+## 📚 Índex de Tasques
 
-📊 Avaluació
-Distribució de Pesos
+### 🔒 Bloc Seguretat i DRP
 
-Treball Individual: 60%
+| Tasca | Títol | Tipus | Enllaç |
+|-------|-------|-------|--------|
+| T01 | DRP: Anàlisi Cas Client | Grup | [📂 T01](./Tasques/T01_DRP_Cas_Client/) |
+| T02 | DRP: Cas Pràctic | Grup | [📂 T02](./Tasques/T02_DRP_Cas_Practic/) |
+| T03 | Imatges del Sistema (Rescuezilla) | Individual | [📂 T03](./Tasques/T03_Imatges_Sistema/) |
 
-Tasques individuals (T03, T05, T06, T08, T09, T10, T14, T15)
-Nota mínima requerida: 4/10 per fer mitjana
+### 🌐 Bloc Accés Remot
 
+| Tasca | Títol | Tipus | Enllaç |
+|-------|-------|-------|--------|
+| T04 | Introducció Accés Remot | Teoria | [📂 T04](./Tasques/T04_Acces_Remot_Intro/) |
+| T05 | Connexió via SSH | Individual | [📂 T05](./Tasques/T05_SSH/) |
+| T06 | Escriptori Remot (RDP) | Individual | [📂 T06](./Tasques/T06_RDP/) |
+| T07 | Assistència Remota | Parelles | [📂 T07](./Tasques/T07_Assistencia_Remota/) |
 
-Treball en Equip: 40%
+### 💾 Bloc Servidors
 
-Tasques en parelles i grup (T01, T02, T07, T13)
-Productes finals (P01, P02, P03)
+| Tasca | Títol | Tipus | Enllaç |
+|-------|-------|-------|--------|
+| T08 | Auditoria i Estandardització | Individual | [📂 T08](./Tasques/T08_Auditoria_Servidors/) |
+| T09 | Servidor Fitxers NFS | Individual | [📂 T09](./Tasques/T09_Servidor_NFS/) |
+| T10 | Servidor Impressió CUPS | Individual | [📂 T10](./Tasques/T10_Servidor_CUPS/) |
 
+### 🎨 Bloc UX/Web
 
-Competències Personals i Socials (CPS): 30%
+| Tasca | Títol | Tipus | Enllaç |
+|-------|-------|-------|--------|
+| T11 | Introducció a Figma | Teoria | [📂 T11](./Tasques/T11_Intro_Figma/) |
+| T12 | Fonaments Landing + Checkout | Teoria | [📂 T12](./Tasques/T12_Fonaments_Web/) |
+| T13 | E-commerce en Figma | Parelles | [📂 T13](./Tasques/T13_Ecommerce_Figma/) |
 
-Autonomia
-Treball en equip
-Responsabilitat
-Actitud professional
+### ♻️ Bloc Sostenibilitat
 
+| Tasca | Títol | Tipus | Enllaç |
+|-------|-------|-------|--------|
+| T14 | Prova Escrita Sostenibilitat | Individual | [📂 T14](./Tasques/T14_Sostenibilitat_Escrita/) |
+| T15 | Circularitat Família Professional | Individual | [📂 T15](./Tasques/T15_Circularitat/) |
 
+---
 
+## 🎯 Productes Finals
 
-🛠️ Eines Utilitzades
+| Codi | Producte | Pes | Enllaç |
+|------|----------|-----|--------|
+| P01 | GitHub Col·laboratiu (Fork & Pull Request) | Equip | [📂 P01](./Productes/P01_GitHub_Collaboratiu/) |
+| P02 | Presentació Maqueta Figma al Client | Parelles | [📂 P02](./Productes/P02_Presentacio_Figma/) |
+| P03 | Kanban Complet del Projecte | Equip | [📂 P03](./Productes/P03_Kanban_Final/) |
 
-Virtualització: VirtualBox, VMware
-Sistemes Operatius: Ubuntu Server, Zorin OS, Windows 11
-Serveis: SSH, NFS, CUPS, RDP
-Backup: Rescuezilla, Duplicati, Duplicity
-UX/UI: Figma
-Gestió: Microsoft Planner (Kanban)
-Control de Versions: Git, GitHub
+---
 
+## 📊 Avaluació
 
-📅 Temporització
-Durada Total: 4 setmanes
-Data Inici: [Omplir]
-Data Final: [Omplir]
-Consulta el Product Backlog complet per veure la planificació detallada.
+### Distribució de Pesos
 
-👥 Equip
-Consultora: EverPia IT Solutions
-Rol: Júnior IT Consultant
-Grup: [Nom del teu grup]
-Membres: [Noms dels membres]
+- **Treball Individual**: 60%
+  - Tasques individuals (T03, T05, T06, T08, T09, T10, T14, T15)
+  - *Nota mínima requerida: 4/10 per fer mitjana*
 
-📖 Recursos i Referències
+- **Treball en Equip**: 40%
+  - Tasques en parelles i grup (T01, T02, T07, T13)
+  - Productes finals (P01, P02, P03)
 
-Documentació Oficial Ubuntu Server
-Guia SSH d'OpenSSH
-Figma Learn
-INCIBE - Plans de Recuperació
-Material docent al Moodle dels mòduls:
+- **Competències Personals i Socials (CPS)**: 30%
+  - Autonomia
+  - Treball en equip
+  - Responsabilitat
+  - Actitud professional
 
-0224 Sistemes Operatius en Xarxa
-0226 Seguretat Informàtica
-0227 Serveis de Xarxa
-0228 Aplicacions Web
-1708 Sostenibilitat
+---
 
+## 🛠️ Eines Utilitzades
 
+- **Virtualització**: VirtualBox, VMware
+- **Sistemes Operatius**: Ubuntu Server, Zorin OS, Windows 11
+- **Serveis**: SSH, NFS, CUPS, RDP
+- **Backup**: Rescuezilla, Duplicati, Duplicity
+- **UX/UI**: Figma
+- **Gestió**: Microsoft Planner (Kanban)
+- **Control de Versions**: Git, GitHub
 
+---
 
-📝 Notes Importants
-⚠️ Requisits de lliurament:
+## 📅 Temporització
 
-Totes les tasques individuals han de documentar-se en format Markdown
-Les captures de pantalla han d'incloure's a la carpeta /img de cada tasca
-Els enllaços de Figma han de ser públics o compartits amb el professorat
-El Kanban s'ha de mantenir actualitzat setmanalment
+**Durada Total**: 4 setmanes  
+**Data Inici**: [Omplir]  
+**Data Final**: [Omplir]
 
-✅ Definition of Done:
+Consulta el [Product Backlog complet](./Docs/product_backlog.md) per veure la planificació detallada.
 
-Documentació completa en format .md
-Captures de pantalla amb evidències
-Proves de funcionament validades
-Commit al repositori amb missatge descriptiu
+---
 
+## 👥 Equip
 
-🚀 Com començar
+**Consultora**: EverPia IT Solutions  
+**Rol**: Júnior IT Consultant  
+**Grup**: [Nom del teu grup]  
+**Membres**: [Noms dels membres]
 
-Clona aquest repositori
-Revisa el Product Backlog
-Crea el teu tauler Kanban al Planner
-Comença per la T01 (DRP: Cas Client)
-Documenta cada tasca a la seva carpeta corresponent
-Fes commits regulars amb missatges clars
+---
 
+## 📖 Recursos i Referències
 
-📞 Contacte i Suport
-Professorat:
+- [Documentació Oficial Ubuntu Server](https://ubuntu.com/server/docs)
+- [Guia SSH d'OpenSSH](https://www.openssh.com/)
+- [Figma Learn](https://help.figma.com/)
+- [INCIBE - Plans de Recuperació](https://www.incibe.es/)
+- Material docent al Moodle dels mòduls:
+  - 0224 Sistemes Operatius en Xarxa
+  - 0226 Seguretat Informàtica
+  - 0227 Serveis de Xarxa
+  - 0228 Aplicacions Web
+  - 1708 Sostenibilitat
 
-Carlos Alonso
-Isabel Bosch
-Carles Fugarolas
-Cristian González
-Rubén Martínez
-Blai Redondo
-Nuria Ruiz
+---
 
-Canals de comunicació:
+## 📝 Notes Importants
 
-Moodle del cicle
-Microsoft Teams
-Tutories presencials
+⚠️ **Requisits de lliurament**:
+- Totes les tasques individuals han de documentar-se en format Markdown
+- Les captures de pantalla han d'incloure's a la carpeta `/img` de cada tasca
+- Els enllaços de Figma han de ser públics o compartits amb el professorat
+- El Kanban s'ha de mantenir actualitzat setmanalment
 
+✅ **Definition of Done**:
+- Documentació completa en format `.md`
+- Captures de pantalla amb evidències
+- Proves de funcionament validades
+- Commit al repositori amb missatge descriptiu
 
-🏆 Objectiu Final
+---
 
-"Aquest projecte no és només un conjunt d'exercicis: és la teva carta de presentació professional abans de començar a caminar amb més autonomia, confiança i criteri propi."
+## 🚀 Com començar
 
-Demostrar que estem preparats per sortir d'EverPia per la porta gran.
+1. Clona aquest repositori
+2. Revisa el [Product Backlog](./Docs/product_backlog.md)
+3. Crea el teu tauler Kanban al Planner
+4. Comença per la T01 (DRP: Cas Client)
+5. Documenta cada tasca a la seva carpeta corresponent
+6. Fes commits regulars amb missatges clars
 
-Última actualització: [Data]
-Versió: 1.0
+---
+
+## 📞 Contacte i Suport
+
+**Professorat**:
+- Carlos Alonso
+- Isabel Bosch
+- Carles Fugarolas
+- Cristian González
+- Rubén Martínez
+- Blai Redondo
+- Nuria Ruiz
+
+**Canals de comunicació**:
+- Moodle del cicle
+- Microsoft Teams
+- Tutories presencials
+
+---
+
+## 🏆 Objectiu Final
+
+> *"Aquest projecte no és només un conjunt d'exercicis: és la teva carta de presentació professional abans de començar a caminar amb més autonomia, confiança i criteri propi."*
+
+Demostrar que estem preparats per sortir d'EverPia **per la porta gran**.
+
+---
+
+**Última actualització**: [Data]  
+**Versió**: 1.0
