@@ -139,8 +139,8 @@ Projecte-04/
 ## 📅 Temporització
 
 **Durada Total**: 4 setmanes  
-**Data Inici**: [Omplir]  
-**Data Final**: [Omplir]
+**Data Inici**: 17/11/2025  
+**Data Final**: 14/12/2025
 
 Consulta el [Product Backlog complet](./Docs/product_backlog.md) per veure la planificació detallada.
 
