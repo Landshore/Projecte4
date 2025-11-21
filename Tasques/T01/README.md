@@ -210,15 +210,3 @@ T01_DRP_Cas_Client/
 - La regla **3-2-1** és imprescindible: 3 còpies, 2 mitjans diferents, 1 fora del lloc
 
 ---
-
-## 📞 Dubtes i Consultes
-
-Consulteu amb el vostre professor/a de:
-- **Mòdul**: 0226 Seguretat Informàtica
-- **Horari de tutories**: [Omplir]
-
----
-
-**Última actualització**: [Data]  
-**Autor**: [Nom del grup]  
-**Versió**: 1.0
