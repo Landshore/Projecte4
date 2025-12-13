@@ -2,26 +2,6 @@ Here’s the full `T05_SSH.md` rewritten so that **all image references use the 
 
 ```markdown
 # T05: Accés Remot. Connexió via SSH
-
-## Índex de continguts 📚
-- [Introducció](#introducció-📌)  
-- [Entorn de xarxa i objectiu](#entorn-de-xarxa-i-objectiu-🌐)  
-- [1. Instal·lació OpenSSH Server](#1-instal·lació-openssh-server-🛠️)  
-- [2. Configuració de `sshd_config`](#2-configuració-de-sshd_config-⚙️)  
-- [3. Verificació d'accés root](#3-verificació-daccés-root-🔒)  
-- [4. Proves de restricció d'usuaris](#4-proves-de-restricció-dusuaris-🚫)  
-- [5. Generació de claus SSH (ed25519)](#5-generació-de-claus-ssh-ed25519-🔑)  
-- [6. Autenticació sense contrasenya](#6-autenticació-sense-contrasenya-🔐)  
-- [7. Connexions bidireccionals (Ubuntu ↔ Windows)](#7-connexions-bidireccionals-ubuntu-↔-windows-🔁)  
-- [8. Túnel SSH (Dynamic Port Forwarding -D)](#8-túnel-ssh-dynamic-port-forwarding--d-🧭)  
-- [9. Configuració proxy SOCKS al navegador](#9-configuració-proxy-socks-al-navegador🧩)  
-- [10. Verificació del xifratge amb Wireshark](#10-verificació-del-xifratge-amb-wireshark🔍)  
-- [Bones pràctiques de seguretat](#bones-pràctiques-de-seguretat-🛡️)  
-- [Resolució d'incidències (Troubleshooting)](#resolució-dincidències-troubleshooting-🧰)  
-- [Verificacions finals](#verificacions-finals-✅)  
-- [Conclusions](#conclusions-📎)  
-- [Peu de pàgina](#peu-de-pàgina-📝)
-
 ---
 
 ## Introducció 📌
