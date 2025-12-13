@@ -1,225 +1,445 @@
-Got it, Jifron — thanks for catching that. Let’s do this properly: here’s the **full `T05_SSH.md` guide** with **all image references consistently switched to `image{number}.png`**. Every screenshot placeholder now uses the sequential naming convention so you can drop your renamed files straight into `/img`.
+# 🔐 T05: Accés Remot - Connexió via SSH
 
-```markdown
-# T05: Accés Remot. Connexió via SSH
-
-## Índex de continguts 📚
-- [Introducció](#introducció-📌)  
-- [Entorn de xarxa i objectiu](#entorn-de-xarxa-i-objectiu-🌐)  
-- [1. Instal·lació OpenSSH Server](#1-instal·lació-openssh-server-🛠️)  
-- [2. Configuració de `sshd_config`](#2-configuració-de-sshd_config-⚙️)  
-- [3. Verificació d'accés root](#3-verificació-daccés-root-🔒)  
-- [4. Proves de restricció d'usuaris](#4-proves-de-restricció-dusuaris-🚫)  
-- [5. Generació de claus SSH (ed25519)](#5-generació-de-claus-ssh-ed25519-🔑)  
-- [6. Autenticació sense contrasenya](#6-autenticació-sense-contrasenya-🔐)  
-- [7. Connexions bidireccionals (Ubuntu ↔ Windows)](#7-connexions-bidireccionals-ubuntu-↔-windows-🔁)  
-- [8. Túnel SSH (Dynamic Port Forwarding -D)](#8-túnel-ssh-dynamic-port-forwarding--d-🧭)  
-- [9. Configuració proxy SOCKS al navegador](#9-configuració-proxy-socks-al-navegador🧩)  
-- [10. Verificació del xifratge amb Wireshark](#10-verificació-del-xifratge-amb-wireshark🔍)  
-- [Bones pràctiques de seguretat](#bones-pràctiques-de-seguretat-🛡️)  
-- [Resolució d'incidències (Troubleshooting)](#resolució-dincidències-troubleshooting-🧰)  
-- [Verificacions finals](#verificacions-finals-✅)  
-- [Conclusions](#conclusions-📎)  
-- [Peu de pàgina](#peu-de-pàgina-📝)
+**Prova de Concepte (PoC) - Base de Coneixement Interna**
 
 ---
 
-## Introducció 📌
-Aquest document és una PoC interna destinada a futurs interns i membres de l'equip. Proporciona instruccions pas a pas per a la instal·lació, configuració i verificació d'un entorn SSH segur entre una màquina Ubuntu (Zorin OS) i una màquina Windows.
+## 📋 Taula de Continguts
+
+1. [Introducció](#introducció)
+2. [Entorn de Treball](#entorn-de-treball)
+3. [Instal·lació i Configuració SSH al Servidor Ubuntu](#1-installació-i-configuració-ssh-al-servidor-ubuntu)
+4. [Configuració de Seguretat](#2-configuració-de-seguretat)
+5. [Gestió d'Usuaris i Restriccions](#3-gestió-dusuaris-i-restriccions)
+6. [Autenticació amb Claus SSH](#4-autenticació-amb-claus-ssh)
+7. [Configuració SSH al Client Windows](#5-configuració-ssh-al-client-windows)
+8. [Connexió Bidireccional](#6-connexió-bidireccional)
+9. [Verificació i Bones Pràctiques](#7-verificació-i-bones-pràctiques)
+10. [Resolució de Problemes](#8-resolució-de-problemes)
+11. [Conclusions](#conclusions)
 
 ---
 
-## Entorn de xarxa i objectiu 🌐
-- **Ubuntu (Zorin OS)**: `192.168.56.104`, usuari: `vboxuser`  
-- **Windows**: `192.168.56.103`, usuari: `Damian`  
+## 📖 Introducció
+
+Aquest document serveix com a **guia oficial interna** per a la gestió remota segura de servidors mitjançant SSH (Secure Shell). Com a consultora tecnològica, l'accés remot als servidors dels nostres clients és essencial per a les nostres operacions diàries.
+
+**Objectius del document:**
+- Proporcionar una base de coneixement sòlida per a nous becaris
+- Documentar procediments estàndard de connexió SSH
+- Establir bones pràctiques de seguretat
+- Facilitar la integració ràpida de nous membres a l'equip tècnic
+
+**⚠️ Important:** Aquest és un document viu que s'actualitzarà amb noves millores i procediments.
 
 ---
 
-## 1. Instal·lació OpenSSH Server 🛠️
+## 🖥️ Entorn de Treball
 
-### Ubuntu
+### Configuració de Xarxa
+
+| Màquina | Sistema Operatiu | IP | Usuari Principal |
+|---------|------------------|-----|------------------|
+| Servidor | Ubuntu (Zorin OS) | 192.168.56.104 | vboxuser |
+| Client | Windows 11 | 192.168.56.103 | Damian |
+
+### Requisits Previs
+- Màquines virtuals configurades a la mateixa xarxa
+- Connectivitat de xarxa verificada (ping)
+- Permisos d'administrador/sudo
+
+---
+
+## 1️⃣ Instal·lació i Configuració SSH al Servidor Ubuntu
+
+### 1.1 Instal·lació d'OpenSSH Server
+
+Primer, instal·lem el servidor SSH a Ubuntu:
+
 ```bash
 sudo apt update
-sudo apt install openssh-server -y
-sudo systemctl enable ssh
-sudo systemctl start ssh
+sudo apt install openssh-server
+```
+
+![Instal·lació OpenSSH Server](./img/image1.png)
+
+### 1.2 Verificació de l'Estat del Servei
+
+Comprovem que el servei SSH s'està executant correctament:
+
+```bash
 sudo systemctl status ssh
 ```
 
-![Instal·lació OpenSSH amb error](./img/image1.png)  
-![Estat del servei SSH fallit](./img/image5.png)  
-![Estat del servei SSH actiu](./img/image6.png)
+![Estat del servei SSH](./img/image2.png)
 
-### Windows
-```powershell
-Start-Service sshd
-Set-Service -Name sshd -StartupType 'Automatic'
-Get-Service sshd
+Si el servei no està actiu, l'iniciem i l'habilitem per a l'arrencada automàtica:
+
+```bash
+sudo systemctl start ssh
+sudo systemctl enable ssh
 ```
 
-![Execució com administrador a Windows](./img/image8.png)  
-![PowerShell: servei sshd en execució](./img/image22.png)
+![Activació del servei SSH](./img/image3.png)
 
 ---
 
-## 2. Configuració de `sshd_config` ⚙️
+## 2️⃣ Configuració de Seguretat
 
-```text
-Port 22
+### 2.1 Modificació del Fitxer de Configuració
+
+El fitxer principal de configuració d'SSH es troba a `/etc/ssh/sshd_config`. Editarem aquest fitxer per millorar la seguretat:
+
+```bash
+sudo nano /etc/ssh/sshd_config
+```
+
+### 2.2 Paràmetres de Seguretat Crítics
+
+**Deshabilitar accés root remot:**
+
+Localitzem i modifiquem la línia:
+
+```bash
 PermitRootLogin no
-AllowUsers usuari
-LoginGraceTime 120
-StrictModes yes
-RSAAuthentication yes
-PubkeyAuthentication yes
 ```
 
-![Configuració Port 22 a sshd_config](./img/image2.png)  
-![Configuració de seguretat sshd_config](./img/image7.png)
+![Configuració PermitRootLogin](./img/image4.png)
 
----
+**Restringir usuaris permesos:**
 
-## 3. Verificació d'accés root 🔒
+Afegim la directiva per permetre només usuaris específics:
 
 ```bash
-su root
+AllowUsers vboxuser
 ```
 
-```powershell
-ssh root@192.168.56.104
-```
+![Configuració AllowUsers](./img/image5.png)
 
-![Verificació accés root denegat remotament](./img/image16.png)
+### 2.3 Aplicar els Canvis
 
----
-
-## 4. Proves de restricció d'usuaris 🚫
+Després de modificar la configuració, reiniciem el servei SSH:
 
 ```bash
-sudo useradd -m -s /bin/bash usuari2
-sudo passwd usuari2
+sudo systemctl restart ssh
 ```
 
-![Creació usuari usuari2 amb contrasenya dèbil](./img/image1.png)  
-![Creació usuari usuari amb contrasenya dèbil](./img/image9.png)  
-![Verificació accés usuari2 denegat](./img/image17.png)  
-![Verificació accés usuari acceptat](./img/image3.png)
+Verifiquem que el servei s'ha reiniciat correctament:
+
+```bash
+sudo systemctl status ssh
+```
+
+![Verificació després del reinici](./img/image6.png)
 
 ---
 
-## 5. Generació de claus SSH (ed25519) 🔑
+## 3️⃣ Gestió d'Usuaris i Restriccions
 
-```powershell
-ssh-keygen -t ed25519
+### 3.1 Configuració de l'Usuari Root
+
+Assignem una contrasenya segura a l'usuari root:
+
+```bash
+sudo passwd root
 ```
 
-![PowerShell: generació de clau ed25519](./img/image23.png)  
-![Fingerprint clau pública SSH](./img/image13.png)
+![Configuració contrasenya root](./img/image9.png)
 
----
+### 3.2 Connexió Inicial des de Windows
 
-## 6. Autenticació sense contrasenya 🔐
-
-```powershell
-type $env:USERPROFILE\.ssh\id_ed25519.pub | ssh vboxuser@192.168.56.104 "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
-```
-
-![Configuració clau pública a Ubuntu](./img/image19.png)  
-![Connexió sense contrasenya amb clau pública](./img/image20.png)
-
----
-
-## 7. Connexions bidireccionals (Ubuntu ↔ Windows) 🔁
+Ara provem la connexió SSH des del client Windows cap a Ubuntu:
 
 ```powershell
 ssh vboxuser@192.168.56.104
 ```
 
-![Connexió SSH des de Windows a Ubuntu](./img/image14.png)
+![Primera connexió SSH des de Windows](./img/image7.png)
+
+Acceptem la clau del servidor en la primera connexió i introduïm la contrasenya:
+
+![Connexió exitosa](./img/image8.png)
+
+### 3.3 Creació d'Usuaris de Prova
+
+Per verificar les restriccions d'accés, creem dos usuaris addicionals:
+
+```bash
+sudo adduser usuario1
+sudo adduser usuario2
+```
+
+![Creació d'usuaris](./img/image10.png)
+
+Assignem contrasenyes als nous usuaris:
+
+![Assignació contrasenyes](./img/image11.png)
+
+### 3.4 Proves de Restricció d'Accés
+
+**Prova 1: Accés Root (Ha de fallar remotament)**
+
+Des de Windows, intentem connectar-nos com a root:
+
+```powershell
+ssh root@192.168.56.104
+```
+
+![Accés root denegat remotament](./img/image14.png)
+
+✅ **Resultat esperat:** Accés denegat per la configuració `PermitRootLogin no`
+
+**Verificació local:** Root pot accedir localment al sistema
+
+![Accés root local permès](./img/image15.png)
+
+**Prova 2: Usuari Permès (vboxuser)**
+
+```powershell
+ssh vboxuser@192.168.56.104
+```
+
+![Accés vboxuser permès](./img/image16.png)
+
+✅ **Resultat esperat:** Connexió exitosa
+
+**Prova 3: Usuari No Permès (usuario2)**
+
+```powershell
+ssh usuario2@192.168.56.104
+```
+
+![Accés usuario2 denegat](./img/image17.png)
+
+✅ **Resultat esperat:** Accés denegat per la configuració `AllowUsers vboxuser`
+
+---
+
+## 4️⃣ Autenticació amb Claus SSH
+
+### 4.1 Generació de Parella de Claus
+
+L'autenticació amb claus públiques/privades és més segura que les contrasenyes. Generem una parella de claus al client Windows:
+
+```powershell
+ssh-keygen -t ed25519
+```
+
+**Paràmetres:**
+- `-t ed25519`: Utilitza l'algoritme Ed25519 (modern i segur)
+- Ubicació per defecte: `C:\Users\Damian\.ssh\id_ed25519`
+- Passphrase (opcional): Protecció addicional de la clau privada
+
+![Generació de claus SSH](./img/image18.png)
+
+### 4.2 Còpia de la Clau Pública al Servidor
+
+Copiem la clau pública al servidor Ubuntu:
+
+```powershell
+type $env:USERPROFILE\.ssh\id_ed25519.pub | ssh vboxuser@192.168.56.104 "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
+```
+
+O utilitzant la comanda específica:
+
+```powershell
+ssh-copy-id vboxuser@192.168.56.104
+```
+
+![Còpia de clau pública](./img/image19.png)
+
+### 4.3 Verificació d'Autenticació sense Contrasenya
+
+Ara podem connectar-nos sense introduir contrasenya:
+
+```powershell
+ssh vboxuser@192.168.56.104
+```
+
+![Connexió sense contrasenya](./img/image20.png)
+
+✅ **Resultat:** Accés directe sense sol·licitar contrasenya
+
+---
+
+## 5️⃣ Configuració SSH al Client Windows
+
+### 5.1 Instal·lació d'OpenSSH Server
+
+Per permetre connexions SSH des d'Ubuntu cap a Windows, instal·lem OpenSSH Server:
+
+1. **Configuració de Windows** → **Aplicacions** → **Funcionalitats opcionals**
+2. **Afegir una funcionalitat**
+3. Cercar i instal·lar **"OpenSSH Server"**
+
+![Instal·lació OpenSSH Server a Windows](./img/image21.png)
+
+### 5.2 Iniciar i Configurar el Servei
+
+Obrim PowerShell com a administrador:
+
+```powershell
+# Iniciar el servei
+Start-Service sshd
+
+# Habilitar per a l'arrencada automàtica
+Set-Service -Name sshd -StartupType 'Automatic'
+
+# Verificar estat
+Get-Service sshd
+```
+
+![Configuració servei SSH Windows](./img/image12.png)
+
+### 5.3 Verificació de Regles de Tallafoc
+
+Comprovem que el tallafoc permet connexions SSH:
+
+```powershell
+Get-NetFirewallRule -Name *ssh*
+```
+
+![Verificació regles tallafoc](./img/image13.png)
+
+---
+
+## 6️⃣ Connexió Bidireccional
+
+### 6.1 Connexió des d'Ubuntu cap a Windows
+
+Ara provem la connexió en sentit invers, des del servidor Ubuntu cap al client Windows:
 
 ```bash
 ssh Damian@192.168.56.103
 ```
 
-![Connexió SSH des de Ubuntu a Windows](./img/image15.png)  
-![Accés des d'Ubuntu a Windows](./img/image4.png)  
-![Prompt Windows després de connexió](./img/image25.png)
+![Connexió Ubuntu → Windows](./img/image4.png)
+
+En la primera connexió, acceptem la clau del servidor:
+
+![Acceptació clau servidor Windows](./img/image5.png)
+
+✅ **Resultat:** Connexió bidireccional funcionant correctament
 
 ---
 
-## 8. Túnel SSH (Dynamic Port Forwarding -D) 🧭
+## 7️⃣ Verificació i Bones Pràctiques
 
-```powershell
-ssh -D 1080 -N -f vboxuser@192.168.56.104
-```
+### ✅ Checklist de Seguretat
 
----
+- [x] Accés root denegat remotament
+- [x] Restriccions d'usuaris funcionals (AllowUsers)
+- [x] Autenticació amb claus SSH configurada
+- [x] Contrasenyes segures assignades
+- [x] Tallafoc configurat adequadament
+- [x] Servei SSH actiu i en arrencada automàtica
 
-## 9. Configuració proxy SOCKS al navegador 🧩
+### 🔒 Bones Pràctiques Recomanades
 
-Configurar Firefox amb:
-- SOCKS Host: `127.0.0.1`
-- Port: `1080`
-- SOCKS v5
+1. **Canviar el port per defecte (22):** Redueix atacs automatitzats
+2. **Deshabilitar autenticació per contrasenya:** Forçar ús de claus
+3. **Implementar fail2ban:** Protecció contra atacs de força bruta
+4. **Mantenir el sistema actualitzat:** `sudo apt update && sudo apt upgrade`
+5. **Revisar logs regularment:** `/var/log/auth.log` per activitat SSH
+6. **Utilitzar timeout de sessió:** Desconnexió automàtica per inactivitat
 
----
+### 📊 Comandes Útils de Diagnòstic
 
-## 10. Verificació del xifratge amb Wireshark 🔍
-
-Filtrar per:
-```text
-tcp.port == 22
-```
-
-![Wireshark - trànsit SSH xifrat](./img/image12.png)
-
----
-
-## Bones pràctiques de seguretat 🛡️
-- Desactivar `PermitRootLogin`
-- Usar claus públiques amb passphrase
-- Limitar usuaris amb `AllowUsers`
-- Auditar logs amb `journalctl` i `/var/log/auth.log`
-- Actualitzar el sistema regularment
-
----
-
-## Resolució d'incidències (Troubleshooting) 🧰
-
-### Servei SSH no arrenca
 ```bash
-sudo systemctl status ssh
-sudo journalctl -xeu ssh
+# Veure connexions SSH actives
+who
+
+# Revisar últims accessos
+last
+
+# Logs d'autenticació SSH
+sudo tail -f /var/log/auth.log
+
+# Verificar configuració SSH
+sudo sshd -T
 ```
 
-![Estat del servei SSH fallit](./img/image5.png)
+---
 
-### Servei SSH actiu
+## 8️⃣ Resolució de Problemes
+
+### ❌ Problema: "Connection refused"
+
+**Causa:** Servei SSH no actiu
+
+**Solució:**
 ```bash
+sudo systemctl start ssh
 sudo systemctl status ssh
 ```
 
-![Estat del servei SSH actiu](./img/image6.png)
+### ❌ Problema: "Permission denied (publickey)"
+
+**Causa:** Clau pública no configurada correctament
+
+**Solució:**
+```bash
+# Verificar permisos al servidor
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/authorized_keys
+
+# Verificar contingut
+cat ~/.ssh/authorized_keys
+```
+
+### ❌ Problema: "Network unreachable"
+
+**Causa:** Problema de connectivitat
+
+**Solució:**
+```bash
+# Verificar IP
+ip addr show
+
+# Test de connectivitat
+ping 192.168.56.103
+```
+
+### ❌ Problema: Usuari no pot connectar-se
+
+**Causa:** Restricció AllowUsers
+
+**Solució:** Afegir l'usuari a `/etc/ssh/sshd_config`:
+```bash
+AllowUsers vboxuser usuari_nou
+sudo systemctl restart ssh
+```
 
 ---
 
-## Verificacions finals ✅
-- `ssh usuari@192.168.56.104` → accés correcte  
-- `ssh root@192.168.56.104` → denegat  
-- `ssh usuari2@192.168.56.104` → denegat  
-- `ssh Damian@192.168.56.103` → accés des d'Ubuntu
+## 🎯 Conclusions
 
----
+Aquest document ha cobert els aspectes fonamentals de SSH per a la nostra consultora:
 
-## Conclusions 📎
-Aquest document demostra una configuració segura i funcional de connexions SSH entre Ubuntu i Windows, incloent autenticació per claus, restriccions d'usuaris, i verificació de xifratge.
+✅ **Configuració segura** d'OpenSSH Server en entorns Linux i Windows  
+✅ **Hardening** del servidor amb restriccions d'accés  
+✅ **Autenticació avançada** mitjançant claus públiques/privades  
+✅ **Connexions bidireccionals** entre diferents sistemes operatius  
+✅ **Bones pràctiques** de seguretat i manteniment  
 
----
+### 📚 Pròxims Passos
 
-## Peu de pàgina 📝
+Per a futurs becaris o ampliacions d'aquest document:
+- Configuració de túnels SSH (Port Forwarding)
+- Integració amb eines de monitoratge
+- Automatització amb scripts
+- Configuració d'autenticació de dos factors (2FA)
+
+### 👤 Informació del Document
+
 **Autor:** Damian  
+**Curs:** CFGM - Serveis de Xarxa  
+**Tasca:** T05 - Accés Remot via SSH  
 **Data:** 13 de desembre de 2025  
-**Curs / Tasca:** T05 — Accés Remot. Connexió via SSH
-```
+**Versió:** 1.0
 
-✅ Now every screenshot reference is consistently pointing to `./img/image{number}.png`. You can drop your renamed files (`image1.png` … `image25.png`) into `/img` and the guide will render perfectly.
+---
+
+**📝 Nota Final:** Aquest document és una eina viva. Si detecteu millores o actualitzacions necessàries, contacteu amb l'equip tècnic per incorporar-les en futures versions.
+
+**🔐 Recordatori de Seguretat:** Mai compartiu les vostres claus privades. Manteniu sempre actualitzats els vostres sistemes i seguiu les polítiques de seguretat de l'empresa.
