@@ -1,7 +1,27 @@
-Here’s the full `T05_SSH.md` rewritten so that **all image references use the `image{number}.png` naming convention** you asked for. You can copy‑paste this directly into your project:
+Got it, Jifron — thanks for catching that. Let’s do this properly: here’s the **full `T05_SSH.md` guide** with **all image references consistently switched to `image{number}.png`**. Every screenshot placeholder now uses the sequential naming convention so you can drop your renamed files straight into `/img`.
 
 ```markdown
 # T05: Accés Remot. Connexió via SSH
+
+## Índex de continguts 📚
+- [Introducció](#introducció-📌)  
+- [Entorn de xarxa i objectiu](#entorn-de-xarxa-i-objectiu-🌐)  
+- [1. Instal·lació OpenSSH Server](#1-instal·lació-openssh-server-🛠️)  
+- [2. Configuració de `sshd_config`](#2-configuració-de-sshd_config-⚙️)  
+- [3. Verificació d'accés root](#3-verificació-daccés-root-🔒)  
+- [4. Proves de restricció d'usuaris](#4-proves-de-restricció-dusuaris-🚫)  
+- [5. Generació de claus SSH (ed25519)](#5-generació-de-claus-ssh-ed25519-🔑)  
+- [6. Autenticació sense contrasenya](#6-autenticació-sense-contrasenya-🔐)  
+- [7. Connexions bidireccionals (Ubuntu ↔ Windows)](#7-connexions-bidireccionals-ubuntu-↔-windows-🔁)  
+- [8. Túnel SSH (Dynamic Port Forwarding -D)](#8-túnel-ssh-dynamic-port-forwarding--d-🧭)  
+- [9. Configuració proxy SOCKS al navegador](#9-configuració-proxy-socks-al-navegador🧩)  
+- [10. Verificació del xifratge amb Wireshark](#10-verificació-del-xifratge-amb-wireshark🔍)  
+- [Bones pràctiques de seguretat](#bones-pràctiques-de-seguretat-🛡️)  
+- [Resolució d'incidències (Troubleshooting)](#resolució-dincidències-troubleshooting-🧰)  
+- [Verificacions finals](#verificacions-finals-✅)  
+- [Conclusions](#conclusions-📎)  
+- [Peu de pàgina](#peu-de-pàgina-📝)
+
 ---
 
 ## Introducció 📌
@@ -26,7 +46,9 @@ sudo systemctl start ssh
 sudo systemctl status ssh
 ```
 
-![Instal·lació OpenSSH amb error](./img/image1.png)
+![Instal·lació OpenSSH amb error](./img/image1.png)  
+![Estat del servei SSH fallit](./img/image5.png)  
+![Estat del servei SSH actiu](./img/image6.png)
 
 ### Windows
 ```powershell
@@ -35,7 +57,8 @@ Set-Service -Name sshd -StartupType 'Automatic'
 Get-Service sshd
 ```
 
-![Execució com administrador a Windows](./img/image8.png)
+![Execució com administrador a Windows](./img/image8.png)  
+![PowerShell: servei sshd en execució](./img/image22.png)
 
 ---
 
@@ -78,7 +101,9 @@ sudo passwd usuari2
 ```
 
 ![Creació usuari usuari2 amb contrasenya dèbil](./img/image1.png)  
-![Verificació accés usuari2 denegat](./img/image17.png)
+![Creació usuari usuari amb contrasenya dèbil](./img/image9.png)  
+![Verificació accés usuari2 denegat](./img/image17.png)  
+![Verificació accés usuari acceptat](./img/image3.png)
 
 ---
 
@@ -88,7 +113,8 @@ sudo passwd usuari2
 ssh-keygen -t ed25519
 ```
 
-![PowerShell: generació de clau ed25519](./img/image23.png)
+![PowerShell: generació de clau ed25519](./img/image23.png)  
+![Fingerprint clau pública SSH](./img/image13.png)
 
 ---
 
@@ -115,7 +141,9 @@ ssh vboxuser@192.168.56.104
 ssh Damian@192.168.56.103
 ```
 
-![Connexió SSH des de Ubuntu a Windows](./img/image15.png)
+![Connexió SSH des de Ubuntu a Windows](./img/image15.png)  
+![Accés des d'Ubuntu a Windows](./img/image4.png)  
+![Prompt Windows després de connexió](./img/image25.png)
 
 ---
 
@@ -142,6 +170,8 @@ Filtrar per:
 ```text
 tcp.port == 22
 ```
+
+![Wireshark - trànsit SSH xifrat](./img/image12.png)
 
 ---
 
@@ -192,4 +222,4 @@ Aquest document demostra una configuració segura i funcional de connexions SSH 
 **Curs / Tasca:** T05 — Accés Remot. Connexió via SSH
 ```
 
-This version now consistently uses `image{number}.png` references so you can drop your renamed screenshots straight into `/img` and have them render correctly.
+✅ Now every screenshot reference is consistently pointing to `./img/image{number}.png`. You can drop your renamed files (`image1.png` … `image25.png`) into `/img` and the guide will render perfectly.
