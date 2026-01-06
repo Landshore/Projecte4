@@ -10,10 +10,10 @@ Mirem el estatus:
 Fem una altre vegada
 ![Comanda per iniciar un servei](./img/image3.png)
 
-
 Anem a /etc/sshsshd_config i posem aquestes modificacions
 
 ![imatge de d'un port concret al fitxer](./img/image4.png)
+
 ![modificacions afegides al fitxer](./img/image5.png)
 
 Ara mirem el estatus
