@@ -1,7 +1,7 @@
 
 Instal·lació i configuració SSH a Ubuntu
 ![image1](./img/image1.png)
-Activació del servei SSH a Windows i connexió des d'Ubuntu.
+
 
 Mirem el estatus:
 ![comanda per mirar l'estatus d'un servei](./img/image2.png)
@@ -12,6 +12,7 @@ Fem una altre vegada
 
 
 Anem a /etc/sshsshd_config i posem aquestes modificacions
+
 ![imatge de d'un port concret al fitxer](./img/image4.png)
 ![modificacions afegides al fitxer](./img/image5.png)
 
@@ -23,6 +24,7 @@ Entrem a Ubuntu desde Windows:
 ![Una serie de comprovacions](./img/image8.png)
 
 Afegim seguretat a la nostre màquina:
+
 ![Afageix una línea al fitxer](./img/image9.png)
 
 Afegim contrasenya a root més altres modificacions:
@@ -35,15 +37,19 @@ Creem dos nous usuaris:
 ![comprovació de dos usuaris creats](./img/image13.png)
 
 El provem:
+
 **ROOT**
+
 ![iniciant a root](./img/image15.png)
 ![intent per accés a la màquina amb root denegada](./img/image16.png)
-Verificació del servei sshd en execució.
+
 
 **USUARI**
+
 ![intent amb èxit per iniciar a la màquina com a usuari](./img/image17.png)
 
 **USUARI2**
+
 ![intent per iniciar a la màquina com a usuari denegada](./img/image18.png)
 
 Generem un claud gen:
@@ -64,6 +70,7 @@ A PowerShell com a administrador començem a arrencar com a admin:
 ![Inicia el servei OpenSHH Server](./img/image24.png)
 
 Desde Ubuntu:
+
 ![Iniciant a la màquina Windows des de Ubuntu](./img/image25.png)
 
 ![Intent amb èxit a la màquina Windows](./img/image26.png)
