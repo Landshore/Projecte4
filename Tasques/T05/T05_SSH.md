@@ -3,87 +3,70 @@ Instal·lació i configuració SSH a Ubuntu
 ![image1](./img/image1.png)
 Activació del servei SSH a Windows i connexió des d'Ubuntu.
 
-![image2](./img/image2.png)
-Generació de clau SSH i accés sense contrasenya.
+Mirem el estatus:
+![comanda per mirar l'estatus d'un servei](./img/image2.png)
 
-![image3](./img/image3.png)
-Creació d'usuaris i proves d'accés SSH.
 
-![image4](./img/image4.png)
-Configuració de seguretat al fitxer sshd_config.
+Fem una altre vegada
+![Comanda per iniciar un servei](./img/image3.png)
 
-![image5](./img/image5.png)
-Verificació del servei SSH i accés des de Windows.
 
-![image6](./img/image6.png)
-Instal·lació d'OpenSSH i resolució d'errors inicials.
+Anem a /etc/sshsshd_config i posem aquestes modificacions
+![imatge de d'un port concret al fitxer](./img/image4.png)
+![modificacions afegides al fitxer](./img/image5.png)
 
-Gestió d'usuaris i accés
-![image7](./img/image7.png)
-Creació de nous usuaris amb contrasenya.
+Ara mirem el estatus
+![Un servei actiu](./img/image6.png)
 
-![image8](./img/image8.png)
-Accés denegat per root via SSH.
+Entrem a Ubuntu desde Windows:
+![un connexió amb éxit establert](./img/image7.png)
+![Una serie de comprovacions](./img/image8.png)
 
-![image9](./img/image9.png)
-Accés correcte amb usuari normal.
+Afegim seguretat a la nostre màquina:
+![Afageix una línea al fitxer](./img/image9.png)
 
-![image10](./img/image10.png)
-Usuari2 no pot accedir via SSH.
+Afegim contrasenya a root més altres modificacions:
+![usuari afegint una contrasenya per root](./img/image10.png)
 
-Clau pública i accés remot
-![image11](./img/image11.png)
-Generació de clau pública amb ssh-keygen.
+Creem dos nous usuaris:
+![creant un usuari i afegint contrasenya](./img/image14.png)
+![creant un segon usuari](./img/image11.png)
+![afegint una contrasenya per el segon usuar](./img/image12.png)
+![comprovació de dos usuaris creats](./img/image13.png)
 
-![image12](./img/image12.png)
-Còpia de la clau pública al servidor.
-
-![image13](./img/image13.png)
-Accés sense contrasenya amb clau pública.
-
-Configuració Windows per SSH
-![image14](./img/image14.png)
-Instal·lació de la funcionalitat OpenSSH Server.
-
-![image15](./img/image15.png)
-Activació del servei SSH a Windows.
-
-![image16](./img/image16.png)
+El provem:
+**ROOT**
+![iniciant a root](./img/image15.png)
+![intent per accés a la màquina amb root denegada](./img/image16.png)
 Verificació del servei sshd en execució.
 
-![image17](./img/image17.png)
-Connexió des d'Ubuntu cap a Windows.
+**USUARI**
+![intent amb èxit per iniciar a la màquina com a usuari](./img/image17.png)
 
-Navegació i informació del sistema
-![image18](./img/image18.png)
-Comprovació de fitxers i directori personal.
+**USUARI2**
+![intent per iniciar a la màquina com a usuari denegada](./img/image18.png)
 
-![image19](./img/image19.png)
-Llistat detallat amb permisos i propietaris.
+Generem un claud gen:
+![generació d'una clau gen.](./img/image19.png)
 
-![image20](./img/image20.png)
-Informació del sistema amb uname.
+Copiem la clau a Ubuntu i provem sense contrasenya:
+![copia la clau a l'altre màquina](./img/image20.png)
 
-Configuració avançada SSH
-![image21](./img/image21.png)
-Paràmetres avançats de seguretat SSH.
+Cerquem funcionalitats opcionals i cliquem afegir una funcionalitat, “OpenSSH Server”:
+![un icona per afegir una funcionalitat](./img/image21.png)
 
-![image22](./img/image22.png)
-Assignació de contrasenya a root.
+Posem:
+![Afageix la funcionalitat OpenSSH Server](./img/image22.png)
 
-![image23](./img/image23.png)
-Creació d'usuaris amb bash i home.
+A PowerShell com a administrador començem a arrencar com a admin:
+![Opció per exucutar com a adminstrador](./img/image23.png)
 
-![image24](./img/image24.png)
-Verificació visual dels usuaris creats.
+![Inicia el servei OpenSHH Server](./img/image24.png)
 
-![image25](./img/image25.png)
-Connexió fallida amb usuari2.
+Desde Ubuntu:
+![Iniciant a la màquina Windows des de Ubuntu](./img/image25.png)
 
-![image26](./img/image26.png)
-Connexió correcta amb usuari via SSH.
-
-Ask
+![Intent amb èxit a la màquina Windows](./img/image26.png)
 
 
 
